@@ -124,7 +124,7 @@
                     <Control.Background>
                         <DrawingBrush TileMode="Tile" Viewport="-10,-10,20,20" ViewportUnits="Absolute" Opacity="0.5">
                             <DrawingBrush.Drawing>
-                                <GeometryDrawing>
+                                <GeometryDrawing Brush="Black">
                                     <GeometryDrawing.Geometry>
                                         <RectangleGeometry Rect="0,0,80,80"/>
                                     </GeometryDrawing.Geometry>

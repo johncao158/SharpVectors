@@ -79,15 +79,6 @@ namespace SharpVectors.Renderers.Wpf
                 }
             }
 
-            Transform pathTransform = this.Transform;
-            if (pathTransform != null && !pathTransform.Value.IsIdentity)
-            {
-                _drawGroup.Transform = pathTransform;
-            }
-            else
-            {
-                pathTransform = null; // render any identity transform useless...
-            }
             Geometry pathClip = this.ClipGeometry;
             if (pathClip != null && !pathClip.IsEmpty())
             {
@@ -103,7 +94,7 @@ namespace SharpVectors.Renderers.Wpf
                 _drawGroup.OpacityMask = pathMask;
             }
 
-            if (pathTransform != null || pathClip != null || pathMask != null || (opacityValue >= 0 && opacityValue < 1))
+            if (pathClip != null || pathMask != null || (opacityValue >= 0 && opacityValue < 1))
             {
                 if ((opacityValue >= 0 && opacityValue < 1))
                 {
@@ -534,36 +525,36 @@ namespace SharpVectors.Renderers.Wpf
                     if (transform != null && !transform.Value.IsIdentity)
                     {
                         geometry.Transform = transform;
-                        if (brush != null && isFillTransmable)
-                        {
-                            Transform brushTransform = brush.Transform;
-                            if (brushTransform == null || brushTransform == Transform.Identity)
-                            {
-                                brush.Transform = transform;
-                            }
-                            else
-                            {
-                                TransformGroup groupTransform = new TransformGroup();
-                                groupTransform.Children.Add(brushTransform);
-                                groupTransform.Children.Add(transform);
-                                brush.Transform = groupTransform;
-                            }
-                        }
-                        if (pen != null && pen.Brush != null)
-                        {
-                            Transform brushTransform = pen.Brush.Transform;
-                            if (brushTransform == null || brushTransform == Transform.Identity)
-                            {
-                                pen.Brush.Transform = transform;
-                            }
-                            else
-                            {
-                                TransformGroup groupTransform = new TransformGroup();
-                                groupTransform.Children.Add(brushTransform);
-                                groupTransform.Children.Add(transform);
-                                pen.Brush.Transform = groupTransform;
-                            }
-                        }
+                        //if (brush != null && isFillTransmable)
+                        //{
+                        //    Transform brushTransform = brush.Transform;
+                        //    if (brushTransform == null || brushTransform == Transform.Identity)
+                        //    {
+                        //        brush.Transform = transform;
+                        //    }
+                        //    else
+                        //    {
+                        //        TransformGroup groupTransform = new TransformGroup();
+                        //        groupTransform.Children.Add(brushTransform);
+                        //        groupTransform.Children.Add(transform);
+                        //        brush.Transform = groupTransform;
+                        //    }
+                        //}
+                        //if (pen != null && pen.Brush != null)
+                        //{
+                        //    Transform brushTransform = pen.Brush.Transform;
+                        //    if (brushTransform == null || brushTransform == Transform.Identity)
+                        //    {
+                        //        pen.Brush.Transform = transform;
+                        //    }
+                        //    else
+                        //    {
+                        //        TransformGroup groupTransform = new TransformGroup();
+                        //        groupTransform.Children.Add(brushTransform);
+                        //        groupTransform.Children.Add(transform);
+                        //        pen.Brush.Transform = groupTransform;
+                        //    }
+                        //}
                     }
                     else
                     {
